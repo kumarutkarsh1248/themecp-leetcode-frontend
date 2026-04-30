@@ -1,0 +1,128 @@
+/*
+*{
+    box-sizing: border-box;
+}
+
+.created-contest {
+    margin-top: 10%;
+    background: #eee;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.4);
+    border: 2px solid black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.created-contest .theme {
+    padding: 10px 20px;
+    background-color: #e0e0e0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid black;
+    width: 40%;
+}
+
+.created-contest .middle-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.created-contest .outer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.created-contest .left {
+    flex: 0 0 200px;
+    font-weight: bold;
+}
+
+.created-contest .right {
+    display: flex;
+    gap: 15px;
+}
+
+.created-contest .cell {
+    flex: 0 0 25%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.created-contest .contest-duration{
+    margin-top: 10%;
+}
+
+*/
+
+.created-contest {
+    margin-top: 10%;
+    background: #eee;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.4);
+    border: 2px solid black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.created-contest .theme {
+    padding: 10px 20px;
+    background-color: #e0e0e0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid black;
+    width: 40%;
+}
+
+.middle-table{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    flex-direction:row;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.col-right{
+    display: flex;
+    flex-direction:row;
+    width: 60%;
+    text-align: center;
+    justify-content: space-between;
+    
+}
+
+.col-left{
+    width: 40%;
+    text-align: center;
+}
+
+.cell{
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid black;
+    /* padding-left: 10px;
+    padding-right: 10px; */
+
+    width: 70px;
+}
