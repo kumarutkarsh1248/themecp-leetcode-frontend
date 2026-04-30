@@ -8,5 +8,6 @@ export default defineConfig({
   ],
   server:{
     port: 3001
-  }
+  },
+  base: process.env.VITE_BASE_PATH || "/themecp-leetcode-frontend"
 })
