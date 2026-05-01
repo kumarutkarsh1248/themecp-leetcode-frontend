@@ -2,7 +2,7 @@ import axios from "axios";
 
 async function getUserData(user) {
     try {
-        const result = await axios.get(`http://localhost:3002/leetcode/${user}`, user);
+        const result = await axios.get(`${import.meta.env.VITE_API_URL}/leetcode/${user}`, user);
         return result.data; 
     } catch (err) {
         console.error("Error in makeEntry:", err);
@@ -13,7 +13,7 @@ async function getUserData(user) {
 async function saveProfileName(user_profile_name, email){
 
     try{
-        const result = await axios.post("http://localhost:3002/users/save_profile_name", {
+        const result = await axios.post(`${import.meta.env.VITE_API_URL}/users/save_profile_name`, {
             user_profile_name: user_profile_name,
             email: email
         })
@@ -27,7 +27,7 @@ async function getContestHistory(email) {
     console.log("&&&&&&", email)
     try {
         const result = await axios.get(
-            "http://localhost:3002/contest/contest_history",
+            `${import.meta.env.VITE_API_URL}/contest/contest_history`,
             {
                 params: { email }
             }

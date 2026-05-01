@@ -4,7 +4,7 @@ export async function makeEntry(user) {
     try {
         console.log("sending info for user entry")
         console.log(user)
-        const result = await axios.post("http://localhost:3002/users/add_user", user);
+        const result = await axios.post(`${import.meta.env.VITE_API_URL}/users/add_user`, user);
         return result.data; 
     } catch (err) {
         console.error("Error in makeEntry:", err);
@@ -17,7 +17,7 @@ export async function getProfileName(email) {
         console.log("trying to get the leetcode profile name based on login id");
 
         const result = await axios.get(
-            "http://localhost:3002/users/get_profile_name",
+            `${import.meta.env.VITE_API_URL}/users/get_profile_name`,
             {
                 params: { email: email }   // ✅ correct way
             }

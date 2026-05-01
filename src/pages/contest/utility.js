@@ -31,7 +31,7 @@ async function getQuestions(ratings, email) {
 
     for (let rating of ratings) {
         try {
-            const result = await axios.get("http://localhost:3002/problems/get_problem", {
+            const result = await axios.get(`${import.meta.env.VITE_API_URL}/problems/get_problem`, {
                 params: {
                     rating: rating,
                     email: email
@@ -61,7 +61,7 @@ async function registerContest(email, level, questions) {
     console.log(data)
 
     try {
-        const result = await axios.post("http://localhost:3002/contest/add_contest", data);
+        const result = await axios.post(`${import.meta.env.VITE_API_URL}/contest/add_contest`, data);
         return result.data.contest_id;
     }
     catch (err) {
@@ -72,7 +72,7 @@ async function registerContest(email, level, questions) {
 async function isContestRunning(email) {
     try {
         const response = await axios.get(
-            "http://localhost:3002/contest/is_contest_running",
+            `${import.meta.env.VITE_API_URL}/contest/is_contest_running`,
             {
                 params: { email },
             }
@@ -99,7 +99,7 @@ function getSecondsAgo(timestamp) {
 
 async function getSubmissionStatus(contestId) {
     try {
-        const result = await axios.get("http://localhost:3002/contest/get_contest", {
+        const result = await axios.get(`${import.meta.env.VITE_API_URL}/contest/get_contest`, {
             params: {
                 contestId: contestId
             }
@@ -123,7 +123,7 @@ async function getSubmissionStatus(contestId) {
 // -----------------------------------------------
 async function getRecentSubmissions(username) {
     console.log(username)
-    const res = await axios.get("http://localhost:3002/leetcode/recent-submissions", {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/leetcode/recent-submissions`, {
         params: {
             username: username
         }
@@ -156,7 +156,7 @@ async function updateSubmission(userEmail, leetCodeProfileName) {
 
     try {
         const result = await axios.post(
-            "http://localhost:3002/contest/update_submission",
+            `${import.meta.env.VITE_API_URL}/contest/update_submission`,
             data
         );
         console.log(result.data);
@@ -168,7 +168,7 @@ async function updateSubmission(userEmail, leetCodeProfileName) {
 async function getQuestionFromProblemId(id) {
     try {
         const result = await axios.get(
-            "http://localhost:3002/problems/get_question_from_problem_id",
+            `${import.meta.env.VITE_API_URL}/problems/get_question_from_problem_id`,
             {
                 params: { id: id }
             }
@@ -183,7 +183,7 @@ async function getQuestionFromProblemId(id) {
 async function getRatingFromProblemId(id) {
     try {
         const result = await axios.get(
-            "http://localhost:3002/problems/get_rating_from_problem_id",
+            `${import.meta.env.VITE_API_URL}/problems/get_rating_from_problem_id`,
             {
                 params: { id: id }
             }
