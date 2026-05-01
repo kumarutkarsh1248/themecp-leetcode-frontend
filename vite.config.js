@@ -3,11 +3,9 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react()
-  ],
-  server:{
+  plugins: [react()],
+  server: {
     port: 3001
   },
-  base: process.env.VITE_BASE_PATH || "/themecp-leetcode-frontend"
+  base: "/"
 })
