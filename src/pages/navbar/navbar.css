@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   height: 100%;   /* take full navbar height */
-  width: 200px;
+  /* width: 200px; */
 }
 
 .nav-icon {

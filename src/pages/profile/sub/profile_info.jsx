@@ -1,5 +1,5 @@
 import "./profile_info.css"
-import { getUserData, saveProfileName } from "./utils"
+import { getUserData, saveProfileName, getThemeDetail } from "./utils"
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react"
 import ProfileNavbar from "./navbar"
@@ -8,11 +8,23 @@ import ProfileNavbar from "./navbar"
 export default function ProfileInfo({ leetcodeProfileName, setProfile }) {
 
     const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
+    const [themeDetail, setThemeDetail] = useState(null);
 
-    const contest_rating = 1306
-    const best_performance = 1640
-    const contest_attempt = 63
-    const email = "kumar.utkarsh.cd.mec22@itbhu.ac.in"
+    useEffect(() => {
+        async function fetchThemeDetail() {
+            if (!isAuthenticated || !user?.email) return;
+
+            const result = await getThemeDetail(user.email);
+            setThemeDetail(result);
+        }
+
+        fetchThemeDetail();
+    }, [isAuthenticated, user]);
+
+    const contest_rating = themeDetail?.contest_rating;
+    const max_rating = themeDetail?.max_rating;
+    const contest_attempt = themeDetail?.contest_attempt;
+    const email = themeDetail?.email;
 
     const [value, setValue] = useState(leetcodeProfileName);
     useEffect(() => {
@@ -21,35 +33,95 @@ export default function ProfileInfo({ leetcodeProfileName, setProfile }) {
 
     return <>
         <div className="profile-info">
-            {
-                leetcodeProfileName==="" ? <div className="add-profile">
-                <b>Add Leetcode profile :</b>
-                <input
-                    type="text"
-                    placeholder="ex: your-username"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
-                />
 
-                <button
-                    onClick={async () => {
-                        setProfile(value)
-                        await saveProfileName(value, user.email);
-                    }}
-                >
-                    submit
-                </button>
-            </div> : null
-            }
-            
-            <div className="details">
-                <h1>Pupil</h1>
-                <h3>{value}</h3>
-                <p>&#128200; Contest Rating: {contest_rating} </p>
-                <p>&#127775; Best Performance: {best_performance}</p>
-                <p>&#127775; Contest Attempt: {contest_attempt}</p>
-                <p>&#128231; Email: {email}</p>
+
+            <div className="left">
+                <div className="profile-data">
+                    {
+                        leetcodeProfileName === "" ? <div className="add-profile">
+                            <b>Add Leetcode profile :</b>
+                            <input
+                                type="text"
+                                placeholder="ex: your-username"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                            />
+
+                            <button
+                                onClick={async () => {
+                                    const done = await saveProfileName(value, user.email);
+                                    if (done) {
+                                        setProfile(value)
+                                    }
+                                    else {
+                                        alert("Unable to save leetcode profile name")
+                                        setValue("");
+                                    }
+
+                                }}
+                            >
+                                submit
+                            </button>
+                        </div> : null
+                    }
+
+                    <div className="details">
+                        <h1>Pupil</h1>
+                        <h3>{value}</h3>
+                        <p>&#128200; Contest Rating: {contest_rating} </p>
+                        <p>&#127775; Max Rating: {max_rating}</p>
+                        <p>&#127775; Contest Attempt: {contest_attempt}</p>
+                        <p>&#128231; Email: {email}</p>
+                    </div>
+                </div>
+
+                <div className="rating-chart">
+                    hello world
+                </div>
+            </div>
+
+            <div className="right">
+
+                <div className="donation">
+                    <div className="support">
+                        Support Us
+                    </div>
+                    <div className="support-detail">
+                        <p>
+                            Theme<span className="theme-highlight-cp">CP</span><span className="theme-highlight-leetcode">-LeetCode</span> is a free platform built to help students practice through structured problem-solving.<br />
+                            I’m currently hosting and maintaining it as a student, and keeping it running comes with real costs like servers and databases.<br />
+                            If you’ve found value in using ThemeCP, even a small contribution can help keep the platform alive and improving for everyone. Donations are completely optional, but deeply appreciated.<br />
+                            Thank you for being a part of this journey.
+                        </p>
+                    </div>
+
+                </div>
+                <div className="UPI">
+                    <img src="/images/paytm-qr.png" className="qr-images" />
+                    <img src="/images/paypal-qr.png" className="qr-images" />
+                    <a
+                        href="https://discord.gg/GqDJEWZP"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Contact Me
+                    </a>                </div>
+                <div className="contributor">
+                    <div className="contributor-heading">
+                        <h3>Contributors</h3>
+                    </div>
+
+                    <div className="contributor-name">
+                        <ul>
+                            <li>Utkarsh</li>
+                            <li>Rahul</li>
+                            <li>Utkarsh</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
+
     </>
 }

@@ -103,7 +103,7 @@ function TableHeading() {
       <div className="table-row-cell">T4</div>
       <div className="table-row-cell">Perf</div>
       <div className="table-row-cell">Rating</div>
-      <div className="table-row-cell">A</div>
+      <div className="table-row-cell">Delta</div>
     </div>
   );
 }
@@ -135,7 +135,7 @@ export default function ContestHistory({leetcodeProfileName}) {
           status3={contest.problem3_status}
           status4={contest.problem4_status}
           perf={contest.perf}
-          rating={contest.rating}
+          rating={contest.rating_after}
           delta={contest.total_score}
         />
       ));

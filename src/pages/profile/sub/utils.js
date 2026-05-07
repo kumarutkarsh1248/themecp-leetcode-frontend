@@ -17,6 +17,8 @@ async function saveProfileName(user_profile_name, email){
             user_profile_name: user_profile_name,
             email: email
         })
+
+        return (result.data.state === "saved");
     }
     catch(err){
         console.log("error while saving the profile name")
@@ -40,6 +42,27 @@ async function getContestHistory(email) {
         console.log(err);
     }
 }
+
+async function getThemeDetail(email){
+
+    try {
+        console.log("**** trying to get the theme detail", email)
+        const result = await axios.get(
+            `${import.meta.env.VITE_API_URL}/users/theme_detail`,
+            {
+                params: { email }
+            }
+        );
+        console.log("insdie get theme detail")
+        console.log(result.data);
+        return result.data.data;
+    } catch (err) {
+        console.log("some error getting the theme profile");
+        console.log(err);
+    }
+
+}
+
 function getRatings(level) {
     if (level == null || isNaN(level)) {
         return [1000, 1200, 1400, 1600];
@@ -63,5 +86,6 @@ export {
     saveProfileName,
     getUserData,
     getContestHistory,
-    getRatings
+    getRatings,
+    getThemeDetail
 };

@@ -87,7 +87,7 @@ export function Running({
             <tbody>
               <tr>
                 <td>1</td>
-                <td> <a href={`https://leetcode.com/problems/${questions[0][1]} `}
+                <td> <a href={`${import.meta.env.VITE_API_URL}://leetcode.com/problems/${questions[0][1]} `}
                   target="_blank"
                   rel="noopener noreferrer">Problem A</a> </td>
                 <td>{ratings[0]}</td>
