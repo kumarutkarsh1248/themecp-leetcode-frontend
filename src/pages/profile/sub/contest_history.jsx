@@ -108,49 +108,46 @@ function TableHeading() {
   );
 }
 
-export default function ContestHistory({leetcodeProfileName}) {
+export default function ContestHistory({ leetcodeProfileName, contestHistory }) {
   const { user } = useAuth0();
-  const [rows, setRows] = useState([]); // ✅ state
 
   useEffect(() => {
-    if (!user) return;
+    console.log("*****contest history ",contestHistory)
+    if (!user?.email || !leetcodeProfileName) return;
 
     async function run() {
-      await updateSubmission(user.email, leetcodeProfileName)
-      const result = await getContestHistory(user.email);
-      console.log(result)
-
-      const newRows = result.map((contest, idx) => (
-        <TableRow
-          key={contest.id} // ✅ better than idx
-          ID={contest.id}
-          Date={new Date(contest.start_time).toLocaleDateString("en-GB")} // ⚠️ fix field name
-          Level={contest.selected_level} // ⚠️ fix field name
-          url_title1={contest.url_title1}
-          url_title2={contest.url_title2}
-          url_title3={contest.url_title3}
-          url_title4={contest.url_title4}
-          status1={contest.problem1_status}
-          status2={contest.problem2_status}
-          status3={contest.problem3_status}
-          status4={contest.problem4_status}
-          perf={contest.perf}
-          rating={contest.rating_after}
-          delta={contest.total_score}
-        />
-      ));
-
-      setRows(newRows); // ✅ triggers re-render
+      await updateSubmission(user.email, leetcodeProfileName);
     }
 
     run();
-  }, [user, leetcodeProfileName]);
+  }, [user, leetcodeProfileName, contestHistory]);
 
   return (
     <div className="contest-history">
       <h1>contest history</h1>
       <TableHeading />
-      <div className="table">{rows}</div>
+
+      <div className="table">
+        {contestHistory?.map((contest) => (
+          <TableRow
+            key={contest.id}
+            ID={contest.id}
+            Date={new Date(contest.start_time).toLocaleDateString("en-GB")}
+            Level={contest.selected_level}
+            url_title1={contest.url_title1}
+            url_title2={contest.url_title2}
+            url_title3={contest.url_title3}
+            url_title4={contest.url_title4}
+            status1={contest.problem1_status}
+            status2={contest.problem2_status}
+            status3={contest.problem3_status}
+            status4={contest.problem4_status}
+            perf={contest.perf}
+            rating={contest.rating_after}
+            delta={contest.total_score}
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -24,10 +24,12 @@
 }
 
 .profile-info .rating-chart{
-  background-color: rgb(230, 202, 202);
-  height: 500px;
+  /* height: 500px; */
+  padding: 5%;
+  padding-top: 0;
   width: 100%;
   border: 2px solid black;
+  margin-top: 5%;
 }
 
 .profile-info .right{

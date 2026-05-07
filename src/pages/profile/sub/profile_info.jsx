@@ -3,9 +3,25 @@ import { getUserData, saveProfileName, getThemeDetail } from "./utils"
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react"
 import ProfileNavbar from "./navbar"
+import RatingChart from "./graph.jsx"
 
 
-export default function ProfileInfo({ leetcodeProfileName, setProfile }) {
+// const data = [
+//   {
+//     date: "2026-05-01 10:30",
+//     rating: 1400
+//   },
+//   {
+//     date: "2026-05-03 18:20",
+//     rating: 1450
+//   },
+//   {
+//     date: "2026-05-06 22:10",
+//     rating: 1510
+//   }
+// ];
+
+export default function ProfileInfo({ leetcodeProfileName, setProfile, contestHistory }) {
 
     const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
     const [themeDetail, setThemeDetail] = useState(null);
@@ -76,7 +92,8 @@ export default function ProfileInfo({ leetcodeProfileName, setProfile }) {
                 </div>
 
                 <div className="rating-chart">
-                    hello world
+                    <h2>Rating Chart</h2>
+                    <RatingChart contestHistory={contestHistory}/>
                 </div>
             </div>
 

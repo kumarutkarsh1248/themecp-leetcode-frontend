@@ -10,7 +10,7 @@ import Level_sheet from "./pages/level-sheet/level-sheet"
 import Guide from "./pages/guide/guide"
 import Login from "./pages/login/login"
 
-import { makeEntry, getProfileName } from "./utils"
+import { makeEntry, getProfileName, getContestHistory } from "./utils"
 
 import ProfileInfo from "./pages/profile/sub/profile_info"
 import ContestHistory from "./pages/profile/sub/contest_history"
@@ -20,6 +20,7 @@ import "./style.css"
 export default function App() {
 
   const [leetcodeProfileName, setProfile] = useState("");
+  const [contestHistory, setContestHistory] = useState(null);
   // login page disappears after authorization, and login can be done in two
   // ways first from the login page and second from the login button
   // so here in the main page we are checking if the isAuth get
@@ -31,7 +32,9 @@ export default function App() {
         console.log("inside app and authenticated");
         await makeEntry(user);
         const profileName = await getProfileName(user.email);
+        const result = await getContestHistory(user.email);
         if (profileName) setProfile(profileName);
+        if(result) setContestHistory(result);
       }
     };
     run();
@@ -54,8 +57,8 @@ export default function App() {
             index
             element={<ProfileInfo  leetcodeProfileName={leetcodeProfileName} setProfile={setProfile}/>}
           />
-          <Route path="profile_info" element={<ProfileInfo leetcodeProfileName={leetcodeProfileName} setProfile={setProfile} />} />
-          <Route path="contest_history" element={<ContestHistory leetcodeProfileName={leetcodeProfileName}/>} />
+          <Route path="profile_info" element={<ProfileInfo leetcodeProfileName={leetcodeProfileName} contestHistory={contestHistory} setProfile={setProfile} />} />
+          <Route path="contest_history" element={<ContestHistory leetcodeProfileName={leetcodeProfileName} contestHistory={contestHistory}/>} />
         </Route>
 
       </Routes>
