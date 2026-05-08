@@ -14,8 +14,7 @@ async function saveProfileName(user_profile_name, email){
 
     try{
         console.log("start")
-        // const result = await axios.post(`${import.meta.env.VITE_API_URL}/users/save_profile_name`, {
-        const result = await axios.post(`http://localhost:3002/users/save_profile_name`, {
+        const result = await axios.post(`${import.meta.env.VITE_API_URL}/users/save_profile_name`, {
             user_profile_name: user_profile_name,
             email: email
         })
