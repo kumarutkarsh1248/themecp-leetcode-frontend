@@ -1,3 +1,7 @@
+.level-sheet{
+  padding: 0 10%;
+  background-color: #f8f8f8;
+}
 .level-sheet .table-row {
   display: flex;
   width: 100%;

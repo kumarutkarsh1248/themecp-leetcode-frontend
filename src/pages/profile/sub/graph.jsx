@@ -11,6 +11,7 @@ import {
 
 export default function RatingChart({ contestHistory }) {
   const sameDateCount = {};
+  console.log("->contest history", contestHistory)
 
   const data = (contestHistory || []).map((el) => {
     const originalTime = new Date(el.start_time).getTime();
@@ -55,7 +56,7 @@ export default function RatingChart({ contestHistory }) {
         <Line
           type="monotone"
           dataKey="rating"
-          stroke="#facc15"
+          stroke="#ef0000"
           strokeWidth={3}
           dot={{ r: 4 }}
         />

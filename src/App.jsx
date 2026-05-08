@@ -38,7 +38,7 @@ export default function App() {
       }
     };
     run();
-  }, [isAuthenticated, user]);
+  }, [isAuthenticated, user, leetcodeProfileName]);
 
   return <>
     <div className="body-container">
@@ -55,7 +55,7 @@ export default function App() {
           {/* default route */}
           <Route
             index
-            element={<ProfileInfo  leetcodeProfileName={leetcodeProfileName} setProfile={setProfile}/>}
+            element={<ProfileInfo  leetcodeProfileName={leetcodeProfileName} contestHistory={contestHistory} setProfile={setProfile}/>}
           />
           <Route path="profile_info" element={<ProfileInfo leetcodeProfileName={leetcodeProfileName} contestHistory={contestHistory} setProfile={setProfile} />} />
           <Route path="contest_history" element={<ContestHistory leetcodeProfileName={leetcodeProfileName} contestHistory={contestHistory}/>} />

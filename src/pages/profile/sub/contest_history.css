@@ -12,6 +12,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* font-size: clamp(10px, 1vw, 16px); */
 }
 
 
@@ -68,4 +70,8 @@
 .contest-history .not-solved{
   background-color: rgb(248, 186, 186);
   
+}
+
+.date-cell{
+  font-size: small;
 }

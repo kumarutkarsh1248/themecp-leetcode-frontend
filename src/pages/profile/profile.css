@@ -1,18 +1,5 @@
-/* profile */
-.profile .profile-container {
-  display: flex;
-  background-color: #1a73e8;
-  height: 300px;
-  width: 100%;
-  justify-content: space-around;
-  margin-top: 10%;
-}
-
-.profile .box {
-  background-color: red;
-  height: 50px;
-  /* width: 50px; */
-  border: 1px solid black;
-  border-radius: 5px;
-  flex: 1;
+.profile-container{
+  background-color: #f8f8f8;
+  padding-left: 2%;
+  padding-right: 2%;;
 }

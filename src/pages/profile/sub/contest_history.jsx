@@ -66,7 +66,7 @@ function TableRow({
   return (
     <div className="table-row">
       <div className="table-row-cell">{ID}</div>
-      <div className="table-row-cell">{Date}</div>
+      <div className="table-row-cell date-cell">{Date}</div>
       <div className="table-row-cell">{Level}</div>
 
       <Cell_Rating rating={ratings[0]} url_title ={url_title1} />
@@ -79,7 +79,7 @@ function TableRow({
       <Cell_Question_status status={status3} />
       <Cell_Question_status status={status4} />
 
-      <div className="table-row-cell">{perf}</div>
+      {/* <div className="table-row-cell">{perf}</div> */}
       <div className="table-row-cell">{rating}</div>
       <div className="table-row-cell">{Number(delta)}</div>
 
@@ -101,7 +101,7 @@ function TableHeading() {
       <div className="table-row-cell">T2</div>
       <div className="table-row-cell">T3</div>
       <div className="table-row-cell">T4</div>
-      <div className="table-row-cell">Perf</div>
+      {/* <div className="table-row-cell">Perf</div> */}
       <div className="table-row-cell">Rating</div>
       <div className="table-row-cell">Delta</div>
     </div>
