@@ -17,7 +17,7 @@ function Timer({ start_time }) {
       setCount(prev => {
         const newCount = prev + 1;
 
-        if (newCount >= 50) {
+        if (newCount >= 180) {
           clearInterval(interval);
           window.location.reload(); //reload entire app
         }
