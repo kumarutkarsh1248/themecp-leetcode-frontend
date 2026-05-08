@@ -13,15 +13,19 @@ async function getUserData(user) {
 async function saveProfileName(user_profile_name, email){
 
     try{
-        const result = await axios.post(`${import.meta.env.VITE_API_URL}/users/save_profile_name`, {
+        console.log("start")
+        // const result = await axios.post(`${import.meta.env.VITE_API_URL}/users/save_profile_name`, {
+        const result = await axios.post(`http://localhost:3002/users/save_profile_name`, {
             user_profile_name: user_profile_name,
             email: email
         })
-
+        console.log("end")
+        console.log(result.data.message)
         return (result.data.state === "saved");
     }
     catch(err){
-        console.log("error while saving the profile name")
+        console.log(err.response.data.message)
+        return 0;
     }
 }
 
@@ -81,6 +85,19 @@ function getRatings(level) {
     }
     return [r1, r2, r3, r4]; // return numbers, not strings
 }
+
+
+async function main(){
+    const a = await saveProfileName("nvnukumarutkarsh", "nvnushaul@gmail.com");
+    if(a){
+        console.log("able to save the profile")
+    }
+    else{
+        console.log("unable to save the profile")
+    }
+}
+
+main();
 
 export {
     saveProfileName,
