@@ -86,17 +86,17 @@ function getRatings(level) {
 }
 
 
-async function main(){
-    const a = await saveProfileName("nvnukumarutkarsh", "nvnushaul@gmail.com");
-    if(a){
-        console.log("able to save the profile")
-    }
-    else{
-        console.log("unable to save the profile")
-    }
-}
+// async function main(){
+//     const a = await saveProfileName("nvnukumarutkarsh", "nvnushaul@gmail.com");
+//     if(a){
+//         console.log("able to save the profile")
+//     }
+//     else{
+//         console.log("unable to save the profile")
+//     }
+// }
 
-main();
+// main();
 
 export {
     saveProfileName,
