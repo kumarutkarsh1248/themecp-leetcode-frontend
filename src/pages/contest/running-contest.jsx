@@ -17,7 +17,7 @@ function Timer({ start_time }) {
       setCount(prev => {
         const newCount = prev + 1;
 
-        if (newCount >= 180) {
+        if (newCount >= import.meta.env.VITE_CONTEST_TIME) {
           clearInterval(interval);
           window.location.reload(); //reload entire app
         }
@@ -29,7 +29,7 @@ function Timer({ start_time }) {
     return () => clearInterval(interval);
   }, []);
 
-  return <h1>Running time = {count}</h1>;
+  return <h1>Running time = {Math.floor(count / 60)}:{count % 60}</h1>;
 }
 
 export function Running({

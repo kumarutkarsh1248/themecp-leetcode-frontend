@@ -63,7 +63,6 @@ async function getThemeDetail(email){
         console.log("some error getting the theme profile");
         console.log(err);
     }
-
 }
 
 function getRatings(level) {
