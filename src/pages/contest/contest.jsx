@@ -36,7 +36,7 @@ export default function Contest({ leetcodeProfileName }) {
       // we found the last con
       let sec = getSecondsAgo(result.data.start_time);
       setContestId(result.data.id);
-      if (sec < import.meta.env.VITE_CONTEST_TIME) { // contest running
+      if (sec < Number(import.meta.env.VITE_CONTEST_TIME)) { // contest running
         // if all the problem of the last contest is solved
         // then the contest is already finished
         if (result.data.problem1_status == "solved_during_contest" &&

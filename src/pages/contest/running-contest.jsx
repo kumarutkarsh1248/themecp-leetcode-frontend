@@ -17,7 +17,7 @@ function Timer({ start_time }) {
       setCount(prev => {
         const newCount = prev + 1;
 
-        if (newCount >= import.meta.env.VITE_CONTEST_TIME) {
+        if (newCount >= Number(import.meta.env.VITE_CONTEST_TIME)) {
           clearInterval(interval);
           window.location.reload(); //reload entire app
         }
