@@ -5,31 +5,35 @@ import { useAuth0 } from "@auth0/auth0-react"
 import "./running-contest.css"
 
 function Timer({ start_time }) {
+  const contestTime = Number(import.meta.env.VITE_CONTEST_TIME);
+
   const [count, setCount] = useState(start_time);
 
-  // sync when start_time updates
   useEffect(() => {
-    setCount(start_time);
-  }, [start_time]);
+    const contestStartedAt = Date.now() - start_time * 1000;
 
-  useEffect(() => {
     const interval = setInterval(() => {
-      setCount(prev => {
-        const newCount = prev + 1;
+      const elapsed = Math.floor((Date.now() - contestStartedAt) / 1000);
 
-        if (newCount >= Number(import.meta.env.VITE_CONTEST_TIME)) {
-          clearInterval(interval);
-          window.location.reload(); //reload entire app
-        }
+      setCount(elapsed);
 
-        return newCount;
-      });
+      if (elapsed >= contestTime) {
+        clearInterval(interval);
+        window.location.reload();
+      }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [start_time, contestTime]);
 
-  return <h1>Running time = {Math.floor(count / 60)}:{count % 60}</h1>;
+  const minutes = Math.floor(count / 60);
+  const seconds = count % 60;
+
+  return (
+    <h1>
+      Running time = {minutes}:{String(seconds).padStart(2, "0")}
+    </h1>
+  );
 }
 
 export function Running({
