@@ -115,7 +115,7 @@ export default function ProfileInfo({ leetcodeProfileName, setProfile, contestHi
                 </div>
                 <div className="UPI">
                     <img src="/images/paytm-qr.png" className="qr-images" />
-                    <img src="/images/paypal-qr.png" className="qr-images" />
+                    {/* <img src="/images/paypal-qr.png" className="qr-images" /> */}
                     <a
                         href="https://discord.gg/GqDJEWZP"
                         target="_blank"
@@ -130,9 +130,8 @@ export default function ProfileInfo({ leetcodeProfileName, setProfile, contestHi
 
                     <div className="contributor-name">
                         <ul>
-                            <li>Utkarsh</li>
-                            <li>Rahul</li>
-                            <li>Utkarsh</li>
+                            <li>Kumar Utkarsh</li>
+                            <li>Friends</li>
                         </ul>
                     </div>
                 </div>
