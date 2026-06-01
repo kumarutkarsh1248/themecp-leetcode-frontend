@@ -131,6 +131,7 @@ export default function ProfileInfo({ leetcodeProfileName, setProfile, contestHi
                     <div className="contributor-name">
                         <ul>
                             <li>Kumar Utkarsh</li>
+                            <li>Om Biradar</li>
                             <li>Friends</li>
                         </ul>
                     </div>
