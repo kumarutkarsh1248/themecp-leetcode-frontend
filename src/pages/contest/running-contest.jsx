@@ -63,16 +63,16 @@ export function Running({
 
             // if all problems are solved then finish the contest
             let count = 0;
-            for(const el of status){
-              if(el) count+=1;
+            for (const el of status) {
+              if (el) count += 1;
             }
-            if(count == 4){
+            if (count == 4) {
               alert("contest finished");
               window.location.reload();
             }
           }
           catch (err) {
-            console.log("some error occured while getting the submissio status")
+            console.log("some error occurred while getting the submission status")
             console.log(err)
           }
         }}>Refresh to verify submission</button>
@@ -95,7 +95,9 @@ export function Running({
                   target="_blank"
                   rel="noopener noreferrer">Problem A</a> </td>
                 <td>{ratings[0]}</td>
-                <td>{submissionStatus[0] ? "Accepted" : "not yet done"}</td>
+                <td className={submissionStatus[0] ? "accepted" : "pending"}>
+                  {submissionStatus[0] ? "Accepted" : "not yet done"}
+                </td>
               </tr>
               <tr>
                 <td>2</td>
@@ -103,7 +105,9 @@ export function Running({
                   target="_blank"
                   rel="noopener noreferrer">Problem B</a> </td>
                 <td>{ratings[1]}</td>
-                <td>{submissionStatus[1] ? "Accepted" : "not yet done"}</td>
+                <td className={submissionStatus[1] ? "accepted" : "pending"}>
+                  {submissionStatus[1] ? "Accepted" : "not yet done"}
+                </td>
               </tr>
               <tr>
                 <td>3</td>
@@ -111,7 +115,9 @@ export function Running({
                   target="_blank"
                   rel="noopener noreferrer">Problem C</a> </td>
                 <td>{ratings[2]}</td>
-                <td>{submissionStatus[2] ? "Accepted" : "not yet done"}</td>
+                <td className={submissionStatus[2] ? "accepted" : "pending"}>
+                  {submissionStatus[2] ? "Accepted" : "not yet done"}
+                </td>
               </tr>
               <tr>
                 <td>4</td>
@@ -119,7 +125,9 @@ export function Running({
                   target="_blank"
                   rel="noopener noreferrer">Problem D</a> </td>
                 <td>{ratings[3]}</td>
-                <td>{submissionStatus[3] ? "Accepted" : "not yet done"}</td>
+                <td className={submissionStatus[3] ? "accepted" : "pending"}>
+                  {submissionStatus[3] ? "Accepted" : "not yet done"}
+                </td>
               </tr>
             </tbody>
           </table>

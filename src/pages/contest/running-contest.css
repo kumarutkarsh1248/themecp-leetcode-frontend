@@ -26,3 +26,7 @@ table {
   padding: 10px;
   text-align: center;
 }
+
+.running-container .accepted{
+  background-color: rgb(109, 231, 109);
+}
